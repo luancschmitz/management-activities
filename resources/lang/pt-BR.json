@@ -12,26 +12,20 @@
     "Activity deleted successfully": "Atividade deleteada com sucesso",
     "Activity updated successfully": "Atividade atualizada com sucesso",
     "Activity created successfully": "Atividade criada com sucesso",
-
     "Customer deleted successfully": "Cliente deleteado com sucesso",
     "Customer updated successfully": "Cliente atualizado com sucesso",
     "Customer created successfully": "Cliente criado com sucesso",
-
     "Customers": "Clientes",
     "New Customer": "Novo Cliente",
     "Name": "Nome",
-
-
-
     "Back": "Voltar",
     "Customer Name": "Nome do Cliente",
     "Submit": "Enviar",
     "There were some problems with your input": "Há algum problema com o formulário",
     "Name": "Nome",
-
-
     "Actions": "Ações",
     "Show": "Exibir",
     "Edit": "Editar",
-    "Delete": "Deletar"
+    "Delete": "Deletar",
+    "Calendar": "Calendário"
 }

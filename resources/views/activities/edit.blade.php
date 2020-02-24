@@ -41,6 +41,12 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>{{__("Delivery Finish")}}</strong>
+                    <input type="checkbox" class="form-control" name="activity_finish"  />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>{{__("Cost")}}:</strong>
                     <input class="form-control" name="activity_cost" value="{{$activity->activity_cost}}" placeholder="{{__("Cost")}}" />
                 </div>
