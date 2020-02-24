@@ -30,9 +30,7 @@
                 method: 'GET',
                 failure: function() {
                     alert('there was an error while fetching events!');
-                },
-                color: 'red',   // a non-ajax option
-                textColor: 'white' // a non-ajax option
+                }
             }
         });
         calendar.render();

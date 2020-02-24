@@ -96,9 +96,10 @@ class SystemManagementController extends Controller
 
     public function getInfos()
     {
-        $activities1 = Activity::all();
+        $activitiesLoad = Activity::all();
 
-        foreach ($activities1 as $activity)
+        $i = 0;
+        foreach ($activitiesLoad as $activity)
         {
             $activities[] = [
                 "title" => $activity->activity_name,
@@ -109,6 +110,13 @@ class SystemManagementController extends Controller
                 ],
                 "description" => $activity->activity_name,
             ];
+
+            if ($activity->activity_finish) {
+                $activities[$i]['textColor'] = 'white';
+                $activities[$i]['backgroundColor'] = 'green';
+                $activities[$i]['borderColor'] = 'green';
+            }
+            $i++;
         }
         return json_encode($activities);
     }
