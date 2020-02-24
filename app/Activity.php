@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     protected $fillable = [
-        'activity_name', 'activity_finish', 'activity_delivery_estimated', 'activity_cost','customer_id'
+        'activity_name',
+        'activity_finish',
+        'activity_delivery_estimated',
+        'activity_cost','customer_id',
+        'created_at',
+        'updated_at'
     ];
 
     public function customer()

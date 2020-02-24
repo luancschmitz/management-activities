@@ -8,9 +8,21 @@ use Illuminate\Http\Request;
 
 class SystemManagementController extends Controller
 {
+    public function dashboard()
+    {
+        $activityCost = Activity::whereBetween('created_at', ['2020-01-01', '2020-01-31'])->sum('activity_cost');
+
+        return view('management.dashboard', compact('activityCost'));
+    }
+
+    public function showCalendar()
+    {
+        return view('management.calendar');
+    }
+
     public function management()
     {
-        return view("management.index");
+        return view("management.uploadFile");
     }
 
     public function uplaodFile(Request $request)
@@ -48,7 +60,8 @@ class SystemManagementController extends Controller
             }
 
             $date = str_replace('/', '-', $activity['data_pedido']);
-            $createdAt = date('Y-m-d', strtotime($date));
+            $createdAt = date('Y-m-d h:i:s', strtotime($date));
+            $updatedAt = date('Y-m-d h:i:s', strtotime($date));
 
 
             if ($activity['data_para_entregua']) {
@@ -71,6 +84,7 @@ class SystemManagementController extends Controller
                 'activity_name' => $activity['atividade'],
                 'customer_id' => $cliente->id,
                 'created_at' => $createdAt,
+                'updated_at' => $updatedAt,
                 'activity_delivery_estimated' => $activityDeliveryEstimated,
                 'activity_finish' => $activityFinish,
                 'activity_cost' => $custo
@@ -78,5 +92,24 @@ class SystemManagementController extends Controller
         }
 
         return redirect(route('system.management'));
+    }
+
+    public function getInfos()
+    {
+        $activities1 = Activity::all();
+
+        foreach ($activities1 as $activity)
+        {
+            $activities[] = [
+                "title" => $activity->activity_name,
+                "start" => $activity->activity_delivery_estimated.'T00:00:00',
+                'end' => $activity->activity_delivery_estimated.'T00:00:00',
+                "extendedProps" => [
+                    "department" => "BioChemistry"
+                ],
+                "description" => $activity->activity_name,
+            ];
+        }
+        return json_encode($activities);
     }
 }

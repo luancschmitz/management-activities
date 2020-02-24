@@ -1,5 +1,4 @@
 @extends('base.layout')
-
 @section('content')
     <h1>Enviar arquivo csv para cadastrar os dados já existentes</h1>
     <form name="uploadFile" method="POST" action="{{route('system.management.upload')}}" enctype="multipart/form-data">

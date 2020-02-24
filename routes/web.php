@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'SystemManagementController@dashboard')->name('system.dashboard');
 Route::resource('activities','ActivitiesController');
 Route::resource("customers", "CustomersController");
 Route::get("system/management", "SystemManagementController@management")->name('system.management');
 Route::post("system/management/upload", "SystemManagementController@uplaodFile")->name('system.management.upload');
+Route::get("system/management/calendar", "SystemManagementController@showCalendar")->name('system.management.calendar');
+Route::get("calendar/getInfos", "SystemManagementController@getInfos")->name('calendar.getInfos');
 
