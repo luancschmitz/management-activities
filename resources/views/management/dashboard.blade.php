@@ -5,14 +5,16 @@
         <thead>
             <tr>
                 <td>{{__("Month")}}</td>
-                <td>{{__("Value")}}</td>
+                <td>{{__("Received Amount")}}</td>
             </tr>
         </thead>
         <tbody>
+            @foreach($monthCost as $month)
             <tr>
-                <td>Janeiro</td>
-                <td>{{$activityCost}}</td>
+                <td>{{$month->month}}</td>
+                <td>{{$month->cost}}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

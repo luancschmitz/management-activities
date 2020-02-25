@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Activity;
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SystemManagementController extends Controller
 {
     public function dashboard()
     {
-        $activityCost = Activity::whereBetween('created_at', ['2020-01-01', '2020-01-31'])->sum('activity_cost');
+        $monthCost = DB::table('activities')
+            ->select(DB::raw('month(created_at) as month, year(created_at) as year, SUM(activity_cost) as cost'))
+            ->groupBy(DB::raw('year(created_at), month(created_at)'))->get();
 
-        return view('management.dashboard', compact('activityCost'));
+        return view('management.dashboard', compact('monthCost'));
     }
 
     public function showCalendar()
